@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { ArrowUpRight, Github, Linkedin, MapPin } from 'lucide-react';
 import { Cabecalho } from './componentes/Cabecalho.jsx';
+import { FundoParticulas } from './componentes/FundoParticulas.jsx';
 import { curriculo } from './dados/curriculo.js';
 
 const basePublica = import.meta.env.BASE_URL;
@@ -50,6 +51,7 @@ function LinkInterno({ rota, children, className }) {
 function AppShell({ children, rotaAtual }) {
   return (
     <>
+      <FundoParticulas />
       <Cabecalho curriculo={curriculo} rotaAtual={rotaAtual} />
       <main className="conteudo">{children}</main>
       <footer className="rodape">
