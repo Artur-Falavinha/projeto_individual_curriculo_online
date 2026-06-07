@@ -4,7 +4,7 @@ export function PerfilCompetencias({ resumo, competencias, idiomas }) {
   return (
     <div className="perfil-competencias">
       <article className="perfil">
-        <h3>Perfil profissional</h3>
+        <h3>Perfil</h3>
         <p>{resumo}</p>
 
         <div className="idiomas">
@@ -21,6 +21,7 @@ export function PerfilCompetencias({ resumo, competencias, idiomas }) {
       </article>
 
       <div className="competencias">
+        <h3 id="competencias">Stack atual</h3>
         {competencias.map((competencia, indice) => (
           <div className="competencia" key={competencia}>
             <span className="competencia__indice">{String(indice + 1).padStart(2, '0')}</span>

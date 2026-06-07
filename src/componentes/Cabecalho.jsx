@@ -1,8 +1,8 @@
 export function Cabecalho({ nome }) {
   const itensNavegacao = [
     ['inicio', 'Início'],
-    ['perfil', 'Perfil'],
-    ['competencias', 'Competências'],
+    ['perfil', 'Sobre'],
+    ['competencias', 'Stack'],
     ['projetos', 'Projetos'],
     ['formacao', 'Formação'],
     ['contato', 'Contato'],
@@ -15,7 +15,7 @@ export function Cabecalho({ nome }) {
           AF
         </span>
         <span className="marca__nome">{nome}</span>
-        <span className="marca__subtitulo">Currículo Online / DS881</span>
+        <span className="marca__subtitulo">curriculo@portfolio:~</span>
       </a>
 
       <nav className="navegacao" aria-label="Navegação principal">

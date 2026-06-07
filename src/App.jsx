@@ -14,7 +14,7 @@ export function App() {
       <main>
         <Hero curriculo={curriculo} />
 
-        <Secao id="perfil" titulo="Perfil e competências">
+        <Secao id="perfil" titulo="Sobre mim">
           <PerfilCompetencias
             resumo={curriculo.resumo}
             competencias={curriculo.competencias}
@@ -36,7 +36,7 @@ export function App() {
       </main>
       <footer className="rodape">
         <span>{curriculo.nome}</span>
-        <span>Currículo Online DS881 / GitHub Pages</span>
+        <span>Currículo Online / GitHub Pages</span>
       </footer>
     </>
   );

@@ -7,10 +7,13 @@ export function Hero({ curriculo }) {
   return (
     <section id="inicio" className="hero">
       <div className="hero__texto">
-        <p className="hero__localizacao">
-          <MapPin aria-hidden="true" size={18} />
-          {curriculo.localizacao}
-        </p>
+        <div className="hero__status">
+          <p className="hero__localizacao">
+            <MapPin aria-hidden="true" size={18} />
+            {curriculo.localizacao}
+          </p>
+          <span>{curriculo.status}</span>
+        </div>
         <h1>{curriculo.nome}</h1>
         <p className="hero__titulo">{curriculo.titulo}</p>
         <p className="hero__resumo">{curriculo.apresentacao}</p>
@@ -27,23 +30,27 @@ export function Hero({ curriculo }) {
         </div>
       </div>
 
-      <div className="hero__painel" aria-label="Resumo visual do currículo técnico">
+      <div className="hero__painel" aria-label="Resumo visual do currículo online">
+        <figure className="retrato">
+          <img src={curriculo.foto} alt="Foto de Artur Lachoman Falavinha" />
+        </figure>
+
         <div className="painel-terminal">
           <div className="painel-terminal__barra">
             <TerminalSquare aria-hidden="true" size={22} />
-            <span>curriculo.sh</span>
+            <span>artur@portfolio:~</span>
           </div>
           <pre>{`$ whoami
 Artur Lachoman Falavinha
 
-$ curso --atual
+$ cat formacao.txt
 Análise e Desenvolvimento de Sistemas / UFPR
 
-$ foco
-web, docker, automação, CI/CD
+$ cat stack.txt
+ReactJS · TypeScript · Node.js · Docker
 
 $ status
-em evolução contínua`}</pre>
+${curriculo.status.toLowerCase()}`}</pre>
         </div>
 
         <div className="painel-marcadores" aria-label="Tecnologias principais">

@@ -1,27 +1,30 @@
 export const curriculo = {
   nome: 'Artur Lachoman Falavinha',
-  titulo: 'Estudante de Análise e Desenvolvimento de Sistemas',
+  titulo: 'Desenvolvedor Full Stack em formação',
   localizacao: 'Curitiba, Paraná, Brasil',
   email: '',
   telefone: '',
-  github: 'https://github.com/seu-usuario',
+  github: 'https://github.com/Artur-Falavinha',
   linkedin: 'https://www.linkedin.com/in/artur-falavinha/',
+  foto: '/artur-falavinha.png',
+  status: 'Aberto a oportunidades em tecnologia',
   resumo:
-    'Estudante de Análise e Desenvolvimento de Sistemas, com atuação profissional no Grupo Lumicenter Lighting e interesse em desenvolvimento web, infraestrutura, automação e tecnologias emergentes.',
+    'Estudante de Análise e Desenvolvimento de Sistemas pela UFPR, com atuação profissional no Grupo Lumicenter Lighting e foco em desenvolvimento web, automação, versionamento e entrega de interfaces funcionais.',
   apresentacao:
-    'Estudante de Análise e Desenvolvimento de Sistemas em Curitiba, com experiência acadêmica e profissional orientada a tecnologia, organização de processos e evolução contínua.',
+    'Construo soluções web com atenção a código limpo, experiência de uso e organização do fluxo de desenvolvimento. Minha stack atual combina React, TypeScript, Node.js, Docker e automação com GitHub Actions.',
   competencias: [
-    'HTML5',
-    'CSS3',
+    'ReactJS',
+    'TypeScript',
+    'Node.js',
     'JavaScript',
-    'React',
     'Git',
     'Docker',
+    'HTML5',
+    'CSS3',
+    'Vite',
     'GitHub Actions',
     'GitHub Pages',
-    'Vite',
-    'Boas práticas de versionamento',
-    'Marketing Digital',
+    'CI/CD',
   ],
   idiomas: [
     {
@@ -39,25 +42,25 @@ export const curriculo = {
   ],
   projetos: [
     {
-      nome: 'Currículo Online DS881',
+      nome: 'Currículo Online',
       descricao:
-        'Site estático com ambiente Docker, pipeline de validação e deploy automatizado no GitHub Pages.',
+        'Site estático pessoal com interface responsiva, ambiente Docker, pipeline de validação e publicação automatizada no GitHub Pages.',
       tecnologias: ['React', 'Vite', 'Docker', 'GitHub Actions'],
       link: '#inicio',
     },
     {
-      nome: 'Portfólio Acadêmico',
+      nome: 'Interfaces Web',
       descricao:
-        'Organização de atividades acadêmicas em uma interface responsiva, com foco em clareza e navegação simples.',
-      tecnologias: ['HTML', 'CSS', 'JavaScript'],
+        'Construção de páginas e componentes responsivos com foco em clareza visual, acessibilidade e manutenção simples.',
+      tecnologias: ['HTML5', 'CSS3', 'JavaScript', 'ReactJS'],
       link: '#projetos',
     },
     {
-      nome: 'Automação de Deploy',
+      nome: 'Automação de Entrega',
       descricao:
-        'Configuração de esteira para validar código, gerar build de produção e publicar artefatos automaticamente.',
-      tecnologias: ['CI/CD', 'GitHub Pages'],
-      link: '#experiencia',
+        'Configuração de esteiras para validar código, gerar build de produção e publicar artefatos com fluxo reproduzível.',
+      tecnologias: ['CI/CD', 'Docker', 'GitHub Pages'],
+      link: '#formacao',
     },
   ],
   formacao: [
@@ -80,13 +83,13 @@ export const curriculo = {
       cargo: 'Grupo Lumicenter Lighting',
       periodo: 'Em andamento',
       atividades: [
-        'Atuação profissional em São José dos Pinhais, Paraná.',
-        'Contato com processos organizacionais e rotinas de trabalho em ambiente corporativo.',
-        'Aprimoramento de habilidades de comunicação, organização e colaboração.',
+        'Atuação profissional em São José dos Pinhais, Paraná, em ambiente corporativo.',
+        'Contato com processos organizacionais, rotinas de trabalho e colaboração entre áreas.',
+        'Evolução prática em comunicação, organização e resolução de problemas.',
       ],
     },
     {
-      cargo: 'Projetos acadêmicos em desenvolvimento web',
+      cargo: 'Projetos práticos em desenvolvimento web',
       periodo: '2026',
       atividades: [
         'Criação de interfaces responsivas para publicação na web.',
