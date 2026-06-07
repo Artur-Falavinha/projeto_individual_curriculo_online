@@ -15,8 +15,10 @@ export function Cabecalho({ curriculo, rotaAtual }) {
       <nav className="cabecalho__nav" aria-label="Navegação principal">
         <a className="marca" href={criarHref()} aria-current={rotaAtual === 'inicio' ? 'page' : undefined}>
           <img className="marca__foto" src={caminhoFoto} alt="Foto de Artur Lachoman Falavinha" />
-          <span className="marca__nome">Artur Falavinha</span>
-          <span className="marca__cursor" aria-hidden="true" />
+          <span className="marca__nome">
+            Artur Falavinha
+            <span className="marca__cursor" aria-hidden="true" />
+          </span>
         </a>
 
         <span className="cabecalho__divisor" aria-hidden="true">
