@@ -46,6 +46,19 @@ body {
   color: var(--cor-texto);
 }
 
+#root {
+  isolation: isolate;
+}
+
+.fundo-particulas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+}
+
 ::selection {
   background: var(--cor-terminal);
   color: var(--cor-terminal-texto);
@@ -61,6 +74,8 @@ a:focus-visible {
 }
 
 .cabecalho {
+  position: relative;
+  z-index: 1;
   width: var(--largura);
   margin: 0 auto;
   padding: 26px 0 0;
@@ -149,6 +164,8 @@ a:focus-visible {
 }
 
 .conteudo {
+  position: relative;
+  z-index: 1;
   width: var(--largura);
   margin: 0 auto;
 }
@@ -520,6 +537,8 @@ a:focus-visible {
 }
 
 .rodape {
+  position: relative;
+  z-index: 1;
   display: flex;
   justify-content: space-between;
   gap: 16px;
