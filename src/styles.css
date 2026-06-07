@@ -65,9 +65,9 @@ a:focus-visible {
   position: sticky;
   top: 0;
   z-index: 20;
-  display: grid;
-  grid-template-columns: minmax(240px, 0.9fr) minmax(0, 1.1fr);
+  display: flex;
   align-items: stretch;
+  justify-content: flex-start;
   min-height: 74px;
   border-bottom: 1px solid var(--cor-linha-forte);
   background: rgba(240, 237, 230, 0.86);
@@ -80,6 +80,7 @@ a:focus-visible {
   grid-template-areas: "foto nome";
   align-items: center;
   column-gap: 14px;
+  flex: 0 0 auto;
   padding: 12px clamp(18px, 3vw, 42px);
   border-right: 1px solid var(--cor-linha);
   text-decoration: none;
@@ -108,6 +109,7 @@ a:focus-visible {
 .navegacao {
   display: flex;
   align-items: stretch;
+  flex: 0 0 auto;
   justify-content: flex-end;
 }
 
@@ -671,7 +673,7 @@ a:focus-visible {
 @media (max-width: 1040px) {
   .cabecalho {
     position: static;
-    grid-template-columns: 1fr;
+    flex-direction: column;
   }
 
   .marca {
