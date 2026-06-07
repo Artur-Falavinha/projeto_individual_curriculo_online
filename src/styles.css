@@ -453,8 +453,11 @@ a:focus-visible {
 
 .competencias h3 {
   grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  min-height: 86px;
   margin: 0;
-  padding: 18px 24px 22px;
+  padding: 0 24px;
   border-right: 1px solid var(--cor-linha-forte);
   border-bottom: 1px solid var(--cor-linha-forte);
 }
@@ -471,10 +474,6 @@ a:focus-visible {
   background: rgba(240, 237, 230, 0.62);
   font-size: 0.78rem;
   font-weight: 900;
-}
-
-.competencia:last-of-type:nth-of-type(odd) {
-  grid-column: 1 / -1;
 }
 
 .competencia__indice {
