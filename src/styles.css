@@ -472,6 +472,10 @@ a:focus-visible {
   font-weight: 900;
 }
 
+.competencia:last-of-type:nth-of-type(odd) {
+  grid-column: 1 / -1;
+}
+
 .competencia__indice {
   color: var(--cor-laranja);
 }
