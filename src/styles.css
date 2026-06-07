@@ -457,7 +457,7 @@ a:focus-visible {
   align-items: center;
   min-height: 86px;
   margin: 0;
-  padding: 0 24px;
+  padding: 16px 24px 0;
   border-right: 1px solid var(--cor-linha-forte);
   border-bottom: 1px solid var(--cor-linha-forte);
 }
