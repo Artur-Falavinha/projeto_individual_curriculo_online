@@ -1,12 +1,18 @@
-# Currículo Online DS881
+# Currículo Online
 
-Projeto individual da disciplina DS881, desenvolvido como um currículo online estático com conteinerização, pipeline de CI/CD e publicação via GitHub Pages.
+Currículo online estático de Artur Lachoman Falavinha, publicado com GitHub Pages e estruturado com ambiente Docker, validação automatizada e fluxo de versionamento por Pull Request.
 
 ## Produção
 
-Depois do deploy no GitHub Pages, atualize este link:
+https://artur-falavinha.github.io/projeto_individual_curriculo_online/
 
-`https://SEU_USUARIO.github.io/ds881-curriculo-GRR99999999/`
+## Rotas
+
+- `/` - apresentação em formato terminal.
+- `/about` - resumo profissional, experiência e formação.
+- `/stack` - stack atual e práticas de entrega.
+- `/projects` - projetos e recortes de trabalho.
+- `/contact` - canais de contato profissional.
 
 ## Tecnologias
 
@@ -22,17 +28,19 @@ Requisitos:
 - Docker
 - Docker Compose
 
-Comandos:
+Subir o ambiente:
 
 ```bash
 docker compose up --build
 ```
 
-A aplicação ficará disponível em:
+A aplicação fica disponível em:
 
-`http://localhost:8080`
+```text
+http://localhost:8080
+```
 
-Para encerrar:
+Encerrar o ambiente:
 
 ```bash
 docker compose down
@@ -53,35 +61,29 @@ npm run build
 npm run preview
 ```
 
+O `postbuild` copia `dist/index.html` para `dist/404.html` para manter as rotas internas funcionando no GitHub Pages.
+
 ## Governança de Git
 
-O fluxo adotado para o projeto deve seguir:
+O projeto segue o fluxo:
 
-1. Criar branches secundárias para alterações, por exemplo `feat/curriculo-online`.
-2. Usar mensagens de commit no padrão Conventional Commits.
+1. Criar uma branch secundária para cada alteração.
+2. Usar mensagens no padrão Conventional Commits.
 3. Abrir Pull Request para integrar alterações na `main`.
-4. Exigir pipeline verde antes do merge.
-5. Manter a branch `main` protegida.
+4. Exigir o status check `Lint e build` antes do merge.
+5. Manter a branch `main` protegida contra push direto.
 
 ## Proteção da branch main
 
-Configuração recomendada no GitHub:
+Configuração aplicada no GitHub:
 
-- Acessar `Settings > Branches > Add branch ruleset`.
-- Definir o alvo como `main`.
-- Ativar bloqueio de push direto.
-- Exigir status checks antes de merge.
-- Selecionar o check `Lint e build`.
-- Salvar a regra.
+- Alvo da regra: branch `main`.
+- Bloqueio de exclusão da branch.
+- Bloqueio de force push.
+- Pull Request obrigatório antes do merge.
+- Status check obrigatório: `Lint e build`.
+- Política de status check estrita para validar a branch atualizada antes do merge.
 
-Adicione aqui o print da configuração aplicada no GitHub antes da entrega:
+Evidência visual da regra:
 
 `docs/branch-protection.png`
-
-## Personalização do currículo
-
-As informações exibidas no site ficam centralizadas em:
-
-`src/dados/curriculo.js`
-
-Edite esse arquivo para ajustar nome, resumo, projetos, formação, experiência, contatos e links.
