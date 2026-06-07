@@ -576,7 +576,7 @@ a:focus-visible {
 }
 
 .cursor-terminal--titulo {
-  margin-left: 0.03em;
+  margin-left: 0;
 }
 
 @keyframes piscar-cursor {
