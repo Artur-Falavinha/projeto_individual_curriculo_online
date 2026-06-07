@@ -6,7 +6,7 @@ export function FormacaoExperiencia({ formacao, experiencia }) {
       <div className="linha-do-tempo__coluna">
         <div className="linha-do-tempo__titulo">
           <GraduationCap aria-hidden="true" size={28} />
-          <h3>Formacao</h3>
+          <h3>Formação</h3>
         </div>
 
         {formacao.map((item) => (

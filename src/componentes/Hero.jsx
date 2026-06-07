@@ -25,10 +25,10 @@ export function Hero({ curriculo }) {
         </div>
       </div>
 
-      <div className="hero__imagem" aria-label="Mesa de trabalho com codigo em monitores">
+      <div className="hero__imagem" aria-label="Mesa de trabalho com código em monitores">
         <img
           src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1200&q=85"
-          alt="Ambiente de desenvolvimento com editor de codigo aberto"
+          alt="Ambiente de desenvolvimento com editor de código aberto"
         />
       </div>
     </section>

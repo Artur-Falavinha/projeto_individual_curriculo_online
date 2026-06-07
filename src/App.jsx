@@ -14,7 +14,7 @@ export function App() {
       <main>
         <Hero curriculo={curriculo} />
 
-        <Secao id="perfil" titulo="Perfil e competencias">
+        <Secao id="perfil" titulo="Perfil e competências">
           <PerfilCompetencias
             resumo={curriculo.resumo}
             competencias={curriculo.competencias}
@@ -26,7 +26,7 @@ export function App() {
           <Projetos projetos={curriculo.projetos} />
         </Secao>
 
-        <Secao id="formacao" titulo="Formacao e experiencia" variante="realce">
+        <Secao id="formacao" titulo="Formação e experiência" variante="realce">
           <FormacaoExperiencia formacao={curriculo.formacao} experiencia={curriculo.experiencia} />
         </Secao>
 
@@ -36,7 +36,7 @@ export function App() {
       </main>
       <footer className="rodape">
         <span>{curriculo.nome}</span>
-        <span>Curriculo Online DS881</span>
+        <span>Currículo Online DS881</span>
       </footer>
     </>
   );

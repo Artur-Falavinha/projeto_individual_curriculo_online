@@ -1,10 +1,10 @@
 export function Cabecalho({ nome }) {
   const itensNavegacao = [
-    ['inicio', 'Inicio'],
+    ['inicio', 'Início'],
     ['perfil', 'Perfil'],
-    ['competencias', 'Competencias'],
+    ['competencias', 'Competências'],
     ['projetos', 'Projetos'],
-    ['formacao', 'Formacao'],
+    ['formacao', 'Formação'],
     ['contato', 'Contato'],
   ];
 
@@ -12,10 +12,10 @@ export function Cabecalho({ nome }) {
     <header className="cabecalho">
       <a className="marca" href="#inicio" aria-label="Voltar ao inicio">
         <span className="marca__nome">{nome}</span>
-        <span className="marca__subtitulo">Curriculo Online</span>
+        <span className="marca__subtitulo">Currículo Online</span>
       </a>
 
-      <nav className="navegacao" aria-label="Navegacao principal">
+      <nav className="navegacao" aria-label="Navegação principal">
         {itensNavegacao.map(([idSecao, rotulo]) => (
           <a key={idSecao} href={`#${idSecao}`}>
             {rotulo}

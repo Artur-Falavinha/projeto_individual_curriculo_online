@@ -1,8 +1,8 @@
-# Curriculo Online DS881
+# Currículo Online DS881
 
-Projeto individual da disciplina DS881, desenvolvido como um curriculo online estatico com conteinerizacao, pipeline de CI/CD e publicacao via GitHub Pages.
+Projeto individual da disciplina DS881, desenvolvido como um currículo online estático com conteinerização, pipeline de CI/CD e publicação via GitHub Pages.
 
-## Producao
+## Produção
 
 Depois do deploy no GitHub Pages, atualize este link:
 
@@ -10,12 +10,12 @@ Depois do deploy no GitHub Pages, atualize este link:
 
 ## Tecnologias
 
-- React com Vite para geracao do site estatico.
+- React com Vite para geração do site estático.
 - Docker e Docker Compose para ambiente local isolado.
-- ESLint para analise estatica.
+- ESLint para análise estática.
 - GitHub Actions para lint, build e deploy no GitHub Pages.
 
-## Execucao local com Docker
+## Execução local com Docker
 
 Requisitos:
 
@@ -28,7 +28,7 @@ Comandos:
 docker compose up --build
 ```
 
-A aplicacao ficara disponivel em:
+A aplicação ficará disponível em:
 
 `http://localhost:8080`
 
@@ -38,7 +38,7 @@ Para encerrar:
 docker compose down
 ```
 
-## Execucao local sem Docker
+## Execução local sem Docker
 
 ```bash
 npm install
@@ -53,19 +53,19 @@ npm run build
 npm run preview
 ```
 
-## Governanca de Git
+## Governança de Git
 
 O fluxo adotado para o projeto deve seguir:
 
-1. Criar branches secundarias para alteracoes, por exemplo `feat/curriculo-online`.
-2. Usar mensagens de commit no padrao Conventional Commits.
-3. Abrir Pull Request para integrar alteracoes na `main`.
+1. Criar branches secundárias para alterações, por exemplo `feat/curriculo-online`.
+2. Usar mensagens de commit no padrão Conventional Commits.
+3. Abrir Pull Request para integrar alterações na `main`.
 4. Exigir pipeline verde antes do merge.
 5. Manter a branch `main` protegida.
 
-## Protecao da branch main
+## Proteção da branch main
 
-Configuracao recomendada no GitHub:
+Configuração recomendada no GitHub:
 
 - Acessar `Settings > Branches > Add branch ruleset`.
 - Definir o alvo como `main`.
@@ -74,14 +74,14 @@ Configuracao recomendada no GitHub:
 - Selecionar o check `Lint e build`.
 - Salvar a regra.
 
-Adicione aqui o print da configuracao aplicada no GitHub antes da entrega:
+Adicione aqui o print da configuração aplicada no GitHub antes da entrega:
 
 `docs/branch-protection.png`
 
-## Personalizacao do curriculo
+## Personalização do currículo
 
-As informacoes exibidas no site ficam centralizadas em:
+As informações exibidas no site ficam centralizadas em:
 
 `src/dados/curriculo.js`
 
-Edite esse arquivo para ajustar nome, resumo, projetos, formacao, experiencia, contatos e links.
+Edite esse arquivo para ajustar nome, resumo, projetos, formação, experiência, contatos e links.

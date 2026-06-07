@@ -22,7 +22,7 @@ jobs:
     name: Lint e build
     runs-on: ubuntu-latest
     steps:
-      - name: Baixar codigo
+      - name: Baixar código
         uses: actions/checkout@v4
 
       - name: Preparar Node.js
@@ -31,7 +31,7 @@ jobs:
           node-version: 22
           cache: npm
 
-      - name: Instalar dependencias
+      - name: Instalar dependências
         run: npm ci
 
       - name: Executar linter
