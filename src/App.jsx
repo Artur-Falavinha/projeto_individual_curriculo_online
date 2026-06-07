@@ -76,6 +76,19 @@ function TerminalComando({ comando, children }) {
   );
 }
 
+function CursorTerminal({ className = '' }) {
+  return <span className={`cursor-terminal ${className}`.trim()} aria-hidden="true" />;
+}
+
+function TituloComCursor({ children, id }) {
+  return (
+    <h1 id={id}>
+      {children}
+      <CursorTerminal className="cursor-terminal--titulo" />
+    </h1>
+  );
+}
+
 function Inicio() {
   return (
     <section className="pagina pagina--inicio" aria-labelledby="titulo-inicio">
@@ -92,7 +105,7 @@ function Inicio() {
         </TerminalComando>
 
         <TerminalComando comando="cat hello.txt">
-          <h1 id="titulo-inicio">Full Stack Developer_</h1>
+          <TituloComCursor id="titulo-inicio">Full Stack Developer</TituloComCursor>
         </TerminalComando>
 
         <TerminalComando comando="cat bio.txt">
@@ -131,7 +144,7 @@ function Inicio() {
   );
 }
 
-function CabecalhoPagina({ rota, titulo, descricao }) {
+function CabecalhoPagina({ rota, titulo, descricao, tituloId }) {
   return (
     <header className="pagina__cabecalho">
       <p className="breadcrumb">
@@ -139,7 +152,7 @@ function CabecalhoPagina({ rota, titulo, descricao }) {
         <span>/</span>
         <span>{rota}</span>
       </p>
-      <h1>{titulo}</h1>
+      <TituloComCursor id={tituloId}>{titulo}</TituloComCursor>
       <p>{descricao}</p>
     </header>
   );
@@ -150,7 +163,8 @@ function Sobre() {
     <section className="pagina" aria-labelledby="titulo-sobre">
       <CabecalhoPagina
         rota="about"
-        titulo="Sobre mim_"
+        titulo="Sobre mim"
+        tituloId="titulo-sobre"
         descricao="Currículo online com foco em desenvolvimento full stack, interfaces web e organização de entrega."
       />
 
@@ -232,7 +246,8 @@ function Stack() {
     <section className="pagina" aria-labelledby="titulo-stack">
       <CabecalhoPagina
         rota="stack"
-        titulo="Stack atual_"
+        titulo="Stack atual"
+        tituloId="titulo-stack"
         descricao="Ferramentas e práticas que uso para construir, versionar e publicar aplicações web."
       />
 
@@ -258,7 +273,8 @@ function Projetos() {
     <section className="pagina" aria-labelledby="titulo-projetos">
       <CabecalhoPagina
         rota="projects"
-        titulo="Projetos_"
+        titulo="Projetos"
+        tituloId="titulo-projetos"
         descricao="Recortes de trabalho prático em interface, automação e publicação de aplicações."
       />
 
@@ -308,7 +324,8 @@ function Contato() {
     <section className="pagina" aria-labelledby="titulo-contato">
       <CabecalhoPagina
         rota="contact"
-        titulo="Contato_"
+        titulo="Contato"
+        tituloId="titulo-contato"
         descricao="Canais para acompanhar meu trabalho e iniciar uma conversa profissional."
       />
 

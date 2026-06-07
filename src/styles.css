@@ -14,7 +14,6 @@
   --cor-terminal: #11120f;
   --cor-terminal-suave: #303126;
   --cor-terminal-texto: #f3efdf;
-  --cor-verde: #91ff5c;
   --cor-azul: #1e80ff;
   --cor-laranja: #ff6b2b;
   --cor-amarelo: #f1c84b;
@@ -35,7 +34,7 @@ body {
   background:
     linear-gradient(rgba(23, 23, 19, 0.045) 1px, transparent 1px),
     linear-gradient(90deg, rgba(23, 23, 19, 0.045) 1px, transparent 1px),
-    radial-gradient(circle at 18% 0%, rgba(145, 255, 92, 0.18), transparent 18rem),
+    radial-gradient(circle at 18% 0%, rgba(241, 200, 75, 0.16), transparent 18rem),
     radial-gradient(circle at 94% 24%, rgba(30, 128, 255, 0.12), transparent 20rem),
     var(--cor-fundo);
   background-size:
@@ -49,7 +48,7 @@ body {
 
 ::selection {
   background: var(--cor-terminal);
-  color: var(--cor-verde);
+  color: var(--cor-terminal-texto);
 }
 
 a {
@@ -105,13 +104,7 @@ a:focus-visible {
 }
 
 .marca__cursor {
-  display: inline-block;
   flex: 0 0 auto;
-  width: 9px;
-  height: 1.1em;
-  background: var(--cor-verde);
-  box-shadow: 0 0 0 1px var(--cor-texto);
-  animation: piscar-cursor 1s steps(2, start) infinite;
 }
 
 .cabecalho__divisor {
@@ -182,7 +175,7 @@ a:focus-visible {
 }
 
 .status-global strong {
-  color: var(--cor-verde);
+  color: var(--cor-laranja);
   font-weight: 700;
   text-shadow: 0 0 0 var(--cor-texto);
 }
@@ -248,8 +241,8 @@ a:focus-visible {
 }
 
 .link-terminal:hover {
-  color: var(--cor-texto);
-  background: var(--cor-verde);
+  color: var(--cor-terminal);
+  background: var(--cor-amarelo);
 }
 
 .resumo-rapido {
@@ -568,6 +561,23 @@ a:focus-visible {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.cursor-terminal {
+  display: inline-block;
+  color: currentColor;
+  font: inherit;
+  line-height: 1;
+  transform: translateY(0.05em);
+  animation: piscar-cursor 1s steps(2, start) infinite;
+}
+
+.cursor-terminal::before {
+  content: "_";
+}
+
+.cursor-terminal--titulo {
+  margin-left: 0.03em;
 }
 
 @keyframes piscar-cursor {

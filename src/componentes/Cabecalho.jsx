@@ -17,7 +17,7 @@ export function Cabecalho({ curriculo, rotaAtual }) {
           <img className="marca__foto" src={caminhoFoto} alt="Foto de Artur Lachoman Falavinha" />
           <span className="marca__nome">
             Artur Falavinha
-            <span className="marca__cursor" aria-hidden="true" />
+            <span className="marca__cursor cursor-terminal" aria-hidden="true" />
           </span>
         </a>
 
