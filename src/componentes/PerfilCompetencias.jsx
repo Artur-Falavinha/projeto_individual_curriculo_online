@@ -1,4 +1,4 @@
-import { CheckCircle2 } from 'lucide-react';
+import { CircleDot } from 'lucide-react';
 
 export function PerfilCompetencias({ resumo, competencias, idiomas }) {
   return (
@@ -21,9 +21,10 @@ export function PerfilCompetencias({ resumo, competencias, idiomas }) {
       </article>
 
       <div className="competencias">
-        {competencias.map((competencia) => (
+        {competencias.map((competencia, indice) => (
           <div className="competencia" key={competencia}>
-            <CheckCircle2 aria-hidden="true" size={18} />
+            <span className="competencia__indice">{String(indice + 1).padStart(2, '0')}</span>
+            <CircleDot aria-hidden="true" size={18} />
             <span>{competencia}</span>
           </div>
         ))}

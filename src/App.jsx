@@ -36,7 +36,7 @@ export function App() {
       </main>
       <footer className="rodape">
         <span>{curriculo.nome}</span>
-        <span>Currículo Online DS881</span>
+        <span>Currículo Online DS881 / GitHub Pages</span>
       </footer>
     </>
   );

@@ -1,7 +1,9 @@
-import { ArrowRight, Download, MapPin } from 'lucide-react';
+import { ArrowRight, MapPin, TerminalSquare } from 'lucide-react';
 import { BotaoLink } from './BotaoLink.jsx';
 
 export function Hero({ curriculo }) {
+  const tecnologiasPrincipais = curriculo.competencias.slice(0, 6);
+
   return (
     <section id="inicio" className="hero">
       <div className="hero__texto">
@@ -20,16 +22,38 @@ export function Hero({ curriculo }) {
           </BotaoLink>
           <BotaoLink href="#contato" variante="secundario">
             Contato
-            <Download aria-hidden="true" size={18} />
+            <ArrowRight aria-hidden="true" size={18} />
           </BotaoLink>
         </div>
       </div>
 
-      <div className="hero__imagem" aria-label="Mesa de trabalho com código em monitores">
-        <img
-          src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1200&q=85"
-          alt="Ambiente de desenvolvimento com editor de código aberto"
-        />
+      <div className="hero__painel" aria-label="Resumo visual do currículo técnico">
+        <div className="painel-terminal">
+          <div className="painel-terminal__barra">
+            <TerminalSquare aria-hidden="true" size={22} />
+            <span>curriculo.sh</span>
+          </div>
+          <pre>{`$ whoami
+Artur Lachoman Falavinha
+
+$ curso --atual
+Análise e Desenvolvimento de Sistemas / UFPR
+
+$ foco
+web, docker, automação, CI/CD
+
+$ status
+em evolução contínua`}</pre>
+        </div>
+
+        <div className="painel-marcadores" aria-label="Tecnologias principais">
+          {tecnologiasPrincipais.map((tecnologia, indice) => (
+            <span key={tecnologia}>
+              <strong>{String(indice + 1).padStart(2, '0')}</strong>
+              {tecnologia}
+            </span>
+          ))}
+        </div>
       </div>
     </section>
   );

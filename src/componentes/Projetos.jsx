@@ -18,6 +18,7 @@ export function Projetos({ projetos }) {
             </ul>
             <a href={projeto.link} aria-label={`Acessar ${projeto.nome}`}>
               <ExternalLink aria-hidden="true" size={18} />
+              <span>Ver</span>
             </a>
           </div>
         </article>

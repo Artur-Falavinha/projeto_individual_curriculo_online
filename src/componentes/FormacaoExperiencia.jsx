@@ -9,8 +9,9 @@ export function FormacaoExperiencia({ formacao, experiencia }) {
           <h3>Formação</h3>
         </div>
 
-        {formacao.map((item) => (
+        {formacao.map((item, indice) => (
           <article className="item-tempo" key={`${item.curso}-${item.periodo}`}>
+            <span className="item-tempo__indice">{String(indice + 1).padStart(2, '0')}</span>
             <h4>{item.curso}</h4>
             <p>{item.instituicao}</p>
             <span>{item.periodo}</span>
@@ -25,8 +26,9 @@ export function FormacaoExperiencia({ formacao, experiencia }) {
           <h3>Experiencia</h3>
         </div>
 
-        {experiencia.map((item) => (
+        {experiencia.map((item, indice) => (
           <article className="item-tempo" key={`${item.cargo}-${item.periodo}`}>
+            <span className="item-tempo__indice">{String(indice + 1).padStart(2, '0')}</span>
             <h4>{item.cargo}</h4>
             <span>{item.periodo}</span>
             <ul>
