@@ -77,9 +77,7 @@ a:focus-visible {
 .marca {
   display: grid;
   grid-template-columns: 52px minmax(0, 1fr);
-  grid-template-areas:
-    "foto nome"
-    "foto subtitulo";
+  grid-template-areas: "foto nome";
   align-items: center;
   column-gap: 14px;
   padding: 12px clamp(18px, 3vw, 42px);
@@ -105,13 +103,6 @@ a:focus-visible {
   font-weight: 900;
   text-overflow: ellipsis;
   text-transform: uppercase;
-}
-
-.marca__subtitulo {
-  grid-area: subtitulo;
-  color: var(--cor-azul);
-  font-size: 0.72rem;
-  font-weight: 800;
 }
 
 .navegacao {

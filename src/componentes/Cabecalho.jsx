@@ -13,7 +13,6 @@ export function Cabecalho({ curriculo }) {
       <a className="marca" href="#inicio" aria-label="Voltar ao inicio">
         <img className="marca__foto" src={curriculo.foto} alt="Foto de Artur Lachoman Falavinha" />
         <span className="marca__nome">{curriculo.nome}</span>
-        <span className="marca__subtitulo">curriculo@portfolio:~</span>
       </a>
 
       <nav className="navegacao" aria-label="Navegação principal">
