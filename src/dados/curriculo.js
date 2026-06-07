@@ -1,6 +1,6 @@
 export const curriculo = {
   nome: 'Artur Lachoman Falavinha',
-  titulo: 'Desenvolvedor Full Stack em formação',
+  titulo: 'Full Stack Developer',
   localizacao: 'Curitiba, Paraná, Brasil',
   email: '',
   telefone: '',
@@ -11,20 +11,15 @@ export const curriculo = {
   resumo:
     'Estudante de Análise e Desenvolvimento de Sistemas pela UFPR, com atuação profissional no Grupo Lumicenter Lighting e foco em desenvolvimento web, automação, versionamento e entrega de interfaces funcionais.',
   apresentacao:
-    'Construo soluções web com atenção a código limpo, experiência de uso e organização do fluxo de desenvolvimento. Minha stack atual combina React, TypeScript, Node.js, Docker e automação com GitHub Actions.',
+    'Construo soluções web com atenção a código limpo, experiência de uso e organização do fluxo de desenvolvimento. Minha stack atual é Full Stack Developer, React, Node.js, SQL, Python, Git e GitHub.',
   competencias: [
-    'ReactJS',
-    'TypeScript',
+    'Full Stack Developer',
+    'React',
     'Node.js',
-    'JavaScript',
+    'SQL',
+    'Python',
     'Git',
-    'Docker',
-    'HTML5',
-    'CSS3',
-    'Vite',
-    'GitHub Actions',
-    'GitHub Pages',
-    'CI/CD',
+    'GitHub',
   ],
   idiomas: [
     {
@@ -45,21 +40,21 @@ export const curriculo = {
       nome: 'Currículo Online',
       descricao:
         'Site estático pessoal com interface responsiva, ambiente Docker, pipeline de validação e publicação automatizada no GitHub Pages.',
-      tecnologias: ['React', 'Vite', 'Docker', 'GitHub Actions'],
+      tecnologias: ['React', 'Node.js', 'GitHub'],
       link: '#inicio',
     },
     {
       nome: 'Interfaces Web',
       descricao:
         'Construção de páginas e componentes responsivos com foco em clareza visual, acessibilidade e manutenção simples.',
-      tecnologias: ['HTML5', 'CSS3', 'JavaScript', 'ReactJS'],
+      tecnologias: ['React', 'SQL', 'Python'],
       link: '#projetos',
     },
     {
       nome: 'Automação de Entrega',
       descricao:
         'Configuração de esteiras para validar código, gerar build de produção e publicar artefatos com fluxo reproduzível.',
-      tecnologias: ['CI/CD', 'Docker', 'GitHub Pages'],
+      tecnologias: ['Git', 'GitHub', 'Node.js'],
       link: '#formacao',
     },
   ],

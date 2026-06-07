@@ -76,10 +76,10 @@ a:focus-visible {
 
 .marca {
   display: grid;
-  grid-template-columns: 48px minmax(0, 1fr);
+  grid-template-columns: 52px minmax(0, 1fr);
   grid-template-areas:
-    "sinal nome"
-    "sinal subtitulo";
+    "foto nome"
+    "foto subtitulo";
   align-items: center;
   column-gap: 14px;
   padding: 12px clamp(18px, 3vw, 42px);
@@ -87,19 +87,15 @@ a:focus-visible {
   text-decoration: none;
 }
 
-.marca__sinal {
-  grid-area: sinal;
-  display: grid;
-  place-items: center;
-  width: 42px;
-  height: 42px;
+.marca__foto {
+  grid-area: foto;
+  width: 46px;
+  height: 46px;
   border: 1px solid var(--cor-texto);
-  background: var(--cor-verde);
-  color: var(--cor-terminal);
-  font-size: 0.85rem;
-  font-weight: 900;
+  border-radius: 999px;
   box-shadow: 5px 5px 0 rgba(26, 25, 23, 0.2);
-  transform: rotate(-4deg);
+  object-fit: cover;
+  object-position: 42% 36%;
 }
 
 .marca__nome {
@@ -279,33 +275,12 @@ a:focus-visible {
 .hero__painel {
   align-self: center;
   display: grid;
-  grid-template-columns: 0.78fr 1fr;
+  grid-template-columns: 1fr;
   grid-template-areas:
-    "foto terminal"
-    "stack stack";
+    "terminal"
+    "stack";
   gap: 16px;
   min-width: 0;
-}
-
-.retrato {
-  grid-area: foto;
-  align-self: stretch;
-  min-height: 360px;
-  margin: 0;
-  border: 1px solid var(--cor-texto);
-  background: var(--cor-terminal);
-  box-shadow: var(--sombra);
-  overflow: hidden;
-  transform: rotate(-1.4deg);
-}
-
-.retrato img {
-  width: 100%;
-  height: 100%;
-  min-height: 360px;
-  object-fit: cover;
-  object-position: 42% 38%;
-  filter: saturate(0.92) contrast(1.04);
 }
 
 .painel-terminal {
@@ -348,7 +323,7 @@ a:focus-visible {
 .painel-marcadores {
   grid-area: stack;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
 }
 
@@ -723,10 +698,6 @@ a:focus-visible {
     min-height: auto;
   }
 
-  .hero__painel {
-    grid-template-columns: minmax(220px, 0.72fr) minmax(0, 1fr);
-  }
-
   .perfil-competencias,
   .linha-do-tempo {
     grid-template-columns: 1fr;
@@ -764,23 +735,6 @@ a:focus-visible {
   .hero__acoes,
   .botao {
     width: 100%;
-  }
-
-  .hero__painel {
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "foto"
-      "terminal"
-      "stack";
-  }
-
-  .retrato,
-  .retrato img {
-    min-height: 340px;
-  }
-
-  .retrato {
-    transform: none;
   }
 
   .painel-marcadores,

@@ -1,4 +1,4 @@
-export function Cabecalho({ nome }) {
+export function Cabecalho({ curriculo }) {
   const itensNavegacao = [
     ['inicio', 'Início'],
     ['perfil', 'Sobre'],
@@ -11,10 +11,8 @@ export function Cabecalho({ nome }) {
   return (
     <header className="cabecalho">
       <a className="marca" href="#inicio" aria-label="Voltar ao inicio">
-        <span className="marca__sinal" aria-hidden="true">
-          AF
-        </span>
-        <span className="marca__nome">{nome}</span>
+        <img className="marca__foto" src={curriculo.foto} alt="Foto de Artur Lachoman Falavinha" />
+        <span className="marca__nome">{curriculo.nome}</span>
         <span className="marca__subtitulo">curriculo@portfolio:~</span>
       </a>
 

@@ -2,7 +2,7 @@ import { ArrowRight, MapPin, TerminalSquare } from 'lucide-react';
 import { BotaoLink } from './BotaoLink.jsx';
 
 export function Hero({ curriculo }) {
-  const tecnologiasPrincipais = curriculo.competencias.slice(0, 6);
+  const tecnologiasPrincipais = curriculo.competencias;
 
   return (
     <section id="inicio" className="hero">
@@ -31,10 +31,6 @@ export function Hero({ curriculo }) {
       </div>
 
       <div className="hero__painel" aria-label="Resumo visual do currículo online">
-        <figure className="retrato">
-          <img src={curriculo.foto} alt="Foto de Artur Lachoman Falavinha" />
-        </figure>
-
         <div className="painel-terminal">
           <div className="painel-terminal__barra">
             <TerminalSquare aria-hidden="true" size={22} />
@@ -47,7 +43,7 @@ $ cat formacao.txt
 Análise e Desenvolvimento de Sistemas / UFPR
 
 $ cat stack.txt
-ReactJS · TypeScript · Node.js · Docker
+Full Stack Developer · React · Node.js · SQL · Python · Git · GitHub
 
 $ status
 ${curriculo.status.toLowerCase()}`}</pre>

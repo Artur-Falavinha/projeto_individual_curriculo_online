@@ -10,7 +10,7 @@ import { curriculo } from './dados/curriculo.js';
 export function App() {
   return (
     <>
-      <Cabecalho nome={curriculo.nome} />
+      <Cabecalho curriculo={curriculo} />
       <main>
         <Hero curriculo={curriculo} />
 
