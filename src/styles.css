@@ -95,7 +95,6 @@ a:focus-visible {
 .marca__nome {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
   overflow: hidden;
   font-size: 1rem;
   font-weight: 700;
