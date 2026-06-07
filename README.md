@@ -84,6 +84,6 @@ Configuração aplicada no GitHub:
 - Status check obrigatório: `Lint e build`.
 - Política de status check estrita para validar a branch atualizada antes do merge.
 
-Evidência visual da regra:
+Evidência da regra:
 
-`docs/branch-protection.png`
+[docs/branch-protection.md](docs/branch-protection.md)
