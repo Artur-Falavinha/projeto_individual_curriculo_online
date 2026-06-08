@@ -6,7 +6,8 @@
   background: #f0ede6;
   color: #1a1917;
   --cor-fundo: #f0ede6;
-  --cor-papel: #fffdf7;
+  --cor-papel: #ebe8e1;
+  --cor-secundaria: #e4e1da;
   --cor-texto: #1a1917;
   --cor-suave: #7a776e;
   --cor-linha: #b8b4ac;
@@ -20,6 +21,7 @@
   --cor-primaria: #2d6a4f;
   --cor-borda-header: #b8b4ac;
   --cor-header: #f0ede6;
+  --cor-grid: rgba(26, 25, 23, 0.07);
   --largura: min(896px, calc(100vw - 32px));
 }
 
@@ -28,7 +30,8 @@
   background: #0d0d0b;
   color: #d4d0c8;
   --cor-fundo: #0d0d0b;
-  --cor-papel: #181914;
+  --cor-papel: #141412;
+  --cor-secundaria: #1e1e1c;
   --cor-texto: #d4d0c8;
   --cor-suave: #6b6762;
   --cor-linha: rgba(212, 208, 200, 0.12);
@@ -39,6 +42,7 @@
   --cor-primaria: #52b788;
   --cor-borda-header: rgba(212, 208, 200, 0.12);
   --cor-header: #0d0d0b;
+  --cor-grid: rgba(212, 208, 200, 0.04);
 }
 
 * {
@@ -52,23 +56,22 @@ html {
 body {
   min-width: 320px;
   margin: 0;
-  background:
-    linear-gradient(rgba(23, 23, 19, 0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(23, 23, 19, 0.045) 1px, transparent 1px),
-    radial-gradient(circle at 18% 0%, rgba(241, 200, 75, 0.16), transparent 18rem),
-    radial-gradient(circle at 94% 24%, rgba(30, 128, 255, 0.12), transparent 20rem),
-    var(--cor-fundo);
+  background-color: var(--cor-fundo);
+  background-image:
+    linear-gradient(var(--cor-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--cor-grid) 1px, transparent 1px);
   background-size:
     32px 32px,
-    32px 32px,
-    auto,
-    auto,
-    auto;
+    32px 32px;
   color: var(--cor-texto);
+  font-family: "Space Mono", "Courier New", monospace;
 }
 
 #root {
+  display: flex;
+  flex-direction: column;
   isolation: isolate;
+  min-height: 100dvh;
 }
 
 .fundo-particulas {
@@ -103,7 +106,7 @@ a:focus-visible {
   padding: 0;
   border-bottom: 1px solid var(--cor-borda-header);
   background: var(--cor-header);
-  backdrop-filter: blur(12px);
+  backdrop-filter: none;
 }
 
 .cabecalho__nav {
@@ -260,7 +263,7 @@ a:focus-visible {
   justify-content: space-between;
   gap: 16px;
   width: 100%;
-  min-height: 24px;
+  min-height: 20px;
   margin: 0;
   padding: 2px 24px;
   border-top: 1px solid var(--cor-linha);
@@ -295,11 +298,14 @@ a:focus-visible {
 .conteudo {
   position: relative;
   z-index: 1;
-  width: var(--largura);
+  flex: 1;
+  width: 100%;
   margin: 0 auto;
 }
 
 .pagina {
+  width: var(--largura);
+  margin: 0 auto;
   padding: clamp(52px, 9vw, 86px) 0;
 }
 
@@ -307,8 +313,9 @@ a:focus-visible {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: calc(100dvh - 178px);
-  padding: clamp(72px, 10vw, 112px) 0;
+  width: 100%;
+  min-height: calc(100dvh - 132px);
+  padding: 80px 16px;
 }
 
 .inicio-retro {
@@ -325,22 +332,21 @@ a:focus-visible {
 }
 
 :root.dark .retro-terminal {
-  background: #181914;
+  background: var(--cor-papel);
 }
 
 .retro-terminal-bar {
   display: flex;
   align-items: center;
   gap: 6px;
-  min-height: 31px;
   margin: 0;
   padding: 6px 12px;
   border-bottom: 1px solid var(--cor-borda-header);
-  background: rgba(184, 180, 172, 0.22);
+  background: var(--cor-secundaria);
 }
 
 :root.dark .retro-terminal-bar {
-  background: #1e1e1c;
+  background: var(--cor-secundaria);
 }
 
 .retro-terminal-btn {
@@ -367,6 +373,7 @@ a:focus-visible {
   margin-left: 12px;
   color: var(--cor-suave);
   font-size: 0.75rem;
+  line-height: 1rem;
 }
 
 .retro-terminal-time {
@@ -374,6 +381,7 @@ a:focus-visible {
   color: var(--cor-suave);
   font-size: 0.625rem;
   font-variant-numeric: tabular-nums;
+  line-height: 1rem;
 }
 
 .retro-terminal-body {
@@ -409,9 +417,9 @@ a:focus-visible {
 .retro-terminal-heading {
   margin: 8px 0 4px;
   color: var(--cor-texto);
-  font-size: clamp(2.35rem, 7vw, 4rem);
+  font-size: 2.25rem;
   font-weight: 700;
-  line-height: 1.05;
+  line-height: calc(2.5 / 2.25);
   letter-spacing: 0;
 }
 
@@ -426,7 +434,7 @@ a:focus-visible {
   min-height: 40px;
   margin-top: 12px;
   color: var(--cor-suave);
-  font-size: clamp(1.25rem, 4vw, 1.5rem);
+  font-size: 1.25rem;
 }
 
 .retro-typewriter__prefix {
@@ -833,28 +841,71 @@ a:focus-visible {
 .rodape {
   position: relative;
   z-index: 1;
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  width: var(--largura);
-  margin: 0 auto;
-  padding: 28px 0 36px;
-  border-top: 1px solid var(--cor-linha);
+  width: 100%;
+  margin: auto 0 0;
   color: var(--cor-suave);
-  font-size: 0.78rem;
 }
 
-.rodape nav {
+.rodape__conteudo {
   display: flex;
-  gap: 14px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  max-width: 896px;
+  margin: 0 auto;
+  padding: 16px 24px;
 }
 
-.rodape a {
+.rodape p {
+  order: 1;
+  margin: 0;
+  font-size: 0.6875rem;
+  line-height: 1.25;
+}
+
+.rodape__links {
+  order: 2;
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.retro-social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 12px;
+  border-right: 1px solid var(--cor-borda-header);
+  color: var(--cor-suave);
+  font-size: 0.6875rem;
+  line-height: 1;
   text-decoration: none;
+  transition: color 150ms ease;
 }
 
-.rodape a:hover {
+.retro-social-link:last-child {
+  border-right: 0;
+}
+
+.retro-social-link span:last-child {
+  font-size: 0.625rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.retro-social-link:hover {
   color: var(--cor-texto);
+}
+
+.retro-social-icon {
+  display: flex;
+  align-items: center;
+  opacity: 0.7;
+}
+
+.retro-social-link:hover .retro-social-icon {
+  opacity: 1;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -872,6 +923,23 @@ a:focus-visible {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@media (min-width: 640px) {
+  .retro-terminal-heading {
+    font-size: 3rem;
+    line-height: 1;
+  }
+
+  .retro-typewriter {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .retro-terminal-heading {
+    font-size: 3.75rem;
   }
 }
 
@@ -909,8 +977,7 @@ a:focus-visible {
     --largura: min(100vw - 24px, 896px);
   }
 
-  .status-global,
-  .rodape {
+  .status-global {
     align-items: flex-start;
     flex-direction: column;
   }
@@ -945,11 +1012,6 @@ a:focus-visible {
     padding: 20px 18px 22px;
   }
 
-  .retro-terminal-actions {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
   .terminal h1,
   .pagina__cabecalho h1 {
     font-size: 5rem;
@@ -971,5 +1033,26 @@ a:focus-visible {
 
   .cartao-stack {
     min-height: auto;
+  }
+}
+
+@media (max-width: 639px) {
+  .retro-terminal-actions {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .rodape__conteudo {
+    flex-direction: column;
+    justify-content: center;
+    padding: 16px;
+  }
+
+  .rodape p {
+    order: 2;
+  }
+
+  .rodape__links {
+    order: 1;
   }
 }

@@ -57,15 +57,29 @@ function AppShell({ children, rotaAtual }) {
       <Cabecalho curriculo={curriculo} rotaAtual={rotaAtual} />
       <main className="conteudo">{children}</main>
       <footer className="rodape">
-        <span>© 2026 arturfalavinha.dev</span>
-        <nav aria-label="Links externos">
-          <a href={curriculo.github} target="_blank" rel="noreferrer">
-            GitHub
-          </a>
-          <a href={curriculo.linkedin} target="_blank" rel="noreferrer">
-            LinkedIn
-          </a>
+        <div className="rodape__conteudo">
+          <p>© 2026 arturfalavinha.dev.br</p>
+          <nav className="rodape__links" aria-label="Links externos">
+            <a className="retro-social-link" href={curriculo.github} target="_blank" rel="noreferrer" aria-label="GitHub">
+              <span className="retro-social-icon">
+                <Github size={14} strokeWidth={2} />
+              </span>
+              <span>GitHub</span>
+            </a>
+            <a
+              className="retro-social-link"
+              href={curriculo.linkedin}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="LinkedIn"
+            >
+              <span className="retro-social-icon">
+                <Linkedin size={14} strokeWidth={2} />
+              </span>
+              <span>LinkedIn</span>
+            </a>
         </nav>
+        </div>
       </footer>
     </>
   );
