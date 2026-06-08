@@ -89,9 +89,6 @@ function CabecalhoRota({ rota, titulo, descricao, largura = 'estreita' }) {
       </div>
       <h1 className="rota-titulo" id={`titulo-${rota}`}>
         {titulo}
-        <span className="retro-blink text-primary" aria-hidden="true">
-          _
-        </span>
       </h1>
       <p>{descricao}</p>
     </header>
