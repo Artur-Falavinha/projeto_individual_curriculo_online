@@ -1,15 +1,24 @@
 import { useEffect, useMemo, useState } from 'react';
 import {
   ArrowUpRight,
+  Accessibility,
+  Atom,
   Briefcase,
+  Braces,
   ChevronRight,
-  Code2,
+  Database,
+  FileCode2,
+  GitBranch,
+  GitPullRequest,
   Github,
   GraduationCap,
   Home,
   Linkedin,
   Mail,
   MapPin,
+  Network,
+  Palette,
+  Workflow,
 } from 'lucide-react';
 import { Cabecalho } from './componentes/Cabecalho.jsx';
 import { FundoParticulas } from './componentes/FundoParticulas.jsx';
@@ -97,6 +106,50 @@ function CabecalhoRota({ rota, titulo, descricao, largura = 'estreita' }) {
 
 function TagRetro({ children }) {
   return <span className="tag-retro">{children}</span>;
+}
+
+function IconePython(props) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
+      <path
+        d="M8 4h7a3 3 0 0 1 3 3v3H9a3 3 0 0 0-3 3v1H4V9a5 5 0 0 1 5-5Z"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M16 20H9a3 3 0 0 1-3-3v-3h9a3 3 0 0 0 3-3v-1h2v5a5 5 0 0 1-5 5Z"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path d="M10 7h.01M14 17h.01" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+const iconesFerramentas = {
+  React: Atom,
+  'HTML/CSS': Braces,
+  'CSS responsivo': Braces,
+  Acessibilidade: Accessibility,
+  'Experiência de uso': Palette,
+  'Node.js': Network,
+  SQL: Database,
+  Python: IconePython,
+  APIs: FileCode2,
+  Git: GitBranch,
+  GitHub: Github,
+  'Pull Requests': GitPullRequest,
+  'CI/CD': Workflow,
+};
+
+function IconeFerramenta({ nome }) {
+  const Icone = iconesFerramentas[nome] ?? FileCode2;
+
+  return <Icone size={22} strokeWidth={1.8} />;
 }
 
 function AppShell({ children, rotaAtual }) {
@@ -406,7 +459,7 @@ function Stack() {
     {
       titulo: 'Frontend',
       descricao: 'Interface, componentização e responsividade',
-      itens: ['React', 'CSS responsivo', 'Acessibilidade', 'Experiência de uso'],
+      itens: ['React', 'HTML/CSS', 'Acessibilidade', 'Experiência de uso'],
     },
     {
       titulo: 'Backend e Dados',
@@ -440,7 +493,7 @@ function Stack() {
               {categoria.itens.map((item) => (
                 <article className="ferramenta-retro" key={item}>
                   <span>
-                    <Code2 size={22} strokeWidth={1.8} />
+                    <IconeFerramenta nome={item} />
                   </span>
                   <strong>{item}</strong>
                 </article>
