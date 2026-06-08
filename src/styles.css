@@ -964,8 +964,7 @@ a:focus-visible {
   backdrop-filter: blur(40px);
   text-decoration: none;
   transition:
-    border-color 150ms ease,
-    background 150ms ease;
+    all 150ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .contato-retro:hover {
@@ -973,21 +972,11 @@ a:focus-visible {
   background: rgba(255, 255, 255, 0.1);
 }
 
-:root:not(.dark) .contato-retro {
-  border-color: color-mix(in oklab, var(--cor-borda-header) 60%, transparent);
-  background: color-mix(in oklab, var(--cor-papel) 75%, transparent);
-}
-
-:root:not(.dark) .contato-retro:hover {
-  border-color: var(--cor-borda-header);
-  background: var(--cor-papel);
-}
-
 .contato-retro__icone {
   flex: 0 0 auto;
   margin-top: 2px;
   color: var(--cor-suave);
-  transition: color 150ms ease;
+  transition: color 150ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .contato-retro:hover .contato-retro__icone {
@@ -998,7 +987,7 @@ a:focus-visible {
   margin: 0;
   color: var(--cor-texto);
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.5;
 }
 
@@ -1006,7 +995,7 @@ a:focus-visible {
   margin: 4px 0 0;
   color: var(--cor-suave);
   font-size: 0.875rem;
-  line-height: 1.55;
+  line-height: 1.25rem;
 }
 
 .status-global {
