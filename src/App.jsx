@@ -404,11 +404,6 @@ function Sobre() {
 function Stack() {
   const categorias = [
     {
-      titulo: 'Base atual',
-      descricao: 'Stack principal do currículo',
-      itens: curriculo.competencias,
-    },
-    {
       titulo: 'Frontend',
       descricao: 'Interface, componentização e responsividade',
       itens: ['React', 'CSS responsivo', 'Acessibilidade', 'Experiência de uso'],
