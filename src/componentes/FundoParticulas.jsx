@@ -15,9 +15,9 @@ const CONFIG_MOBILE = {
 };
 
 const CORES = {
-  ponto: 'rgba(30, 128, 255, 0.34)',
-  linha: '30, 128, 255',
-  linhaMouse: '255, 107, 43',
+  ponto: 'rgba(45, 106, 79, 0.35)',
+  linha: '45, 106, 79',
+  linhaMouse: '45, 106, 79',
 };
 
 function sortearPonto(largura, altura, velocidade) {
