@@ -18,6 +18,7 @@ import {
   MapPin,
   Network,
   Palette,
+  SquareTerminal,
   Workflow,
 } from 'lucide-react';
 import { Cabecalho } from './componentes/Cabecalho.jsx';
@@ -108,28 +109,6 @@ function TagRetro({ children }) {
   return <span className="tag-retro">{children}</span>;
 }
 
-function IconePython(props) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
-      <path
-        d="M8 4h7a3 3 0 0 1 3 3v3H9a3 3 0 0 0-3 3v1H4V9a5 5 0 0 1 5-5Z"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M16 20H9a3 3 0 0 1-3-3v-3h9a3 3 0 0 0 3-3v-1h2v5a5 5 0 0 1-5 5Z"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path d="M10 7h.01M14 17h.01" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />
-    </svg>
-  );
-}
-
 const iconesFerramentas = {
   React: Atom,
   'HTML/CSS': Braces,
@@ -138,7 +117,7 @@ const iconesFerramentas = {
   'Experiência de uso': Palette,
   'Node.js': Network,
   SQL: Database,
-  Python: IconePython,
+  Python: SquareTerminal,
   APIs: FileCode2,
   Git: GitBranch,
   GitHub: Github,
