@@ -1,5 +1,16 @@
 import { useEffect, useMemo, useState } from 'react';
-import { ArrowUpRight, Github, Linkedin, MapPin } from 'lucide-react';
+import {
+  ArrowUpRight,
+  Briefcase,
+  ChevronRight,
+  Code2,
+  Github,
+  GraduationCap,
+  Home,
+  Linkedin,
+  Mail,
+  MapPin,
+} from 'lucide-react';
 import { Cabecalho } from './componentes/Cabecalho.jsx';
 import { FundoParticulas } from './componentes/FundoParticulas.jsx';
 import { curriculo } from './dados/curriculo.js';
@@ -42,12 +53,53 @@ function obterRotaAtual() {
   return obterRotaPeloCaminho(window.location.pathname);
 }
 
-function LinkInterno({ rota, children, className }) {
+function LinkInterno({ rota, children, className, ...propriedades }) {
   return (
-    <a className={className} href={criarHref(rota)}>
+    <a className={className} href={criarHref(rota)} {...propriedades}>
       {children}
     </a>
   );
+}
+
+function BreadcrumbRota({ rota, rotulo }) {
+  return (
+    <nav className="breadcrumb-rota" aria-label="breadcrumb">
+      <ol>
+        <li>
+          <LinkInterno rota="inicio" className="breadcrumb-rota__link" aria-label="Início">
+            <Home size={16} strokeWidth={2} />
+          </LinkInterno>
+        </li>
+        <li aria-hidden="true">
+          <ChevronRight size={14} strokeWidth={2} />
+        </li>
+        <li>
+          <span>{rotulo ?? rota}</span>
+        </li>
+      </ol>
+    </nav>
+  );
+}
+
+function CabecalhoRota({ rota, titulo, descricao, largura = 'estreita' }) {
+  return (
+    <header className={`rota-cabecalho rota-cabecalho--${largura}`}>
+      <div className="rota-cabecalho__breadcrumb">
+        <BreadcrumbRota rota={rota} rotulo={titulo} />
+      </div>
+      <h1 className="rota-titulo" id={`titulo-${rota}`}>
+        {titulo}
+        <span className="retro-blink text-primary" aria-hidden="true">
+          _
+        </span>
+      </h1>
+      <p>{descricao}</p>
+    </header>
+  );
+}
+
+function TagRetro({ children }) {
+  return <span className="tag-retro">{children}</span>;
 }
 
 function AppShell({ children, rotaAtual }) {
@@ -82,19 +134,6 @@ function AppShell({ children, rotaAtual }) {
         </div>
       </footer>
     </>
-  );
-}
-
-function CursorTerminal({ className = '' }) {
-  return <span className={`cursor-terminal ${className}`.trim()} aria-hidden="true" />;
-}
-
-function TituloComCursor({ children, id }) {
-  return (
-    <h1 id={id}>
-      {children}
-      <CursorTerminal className="cursor-terminal--titulo" />
-    </h1>
   );
 }
 
@@ -259,80 +298,108 @@ function Inicio() {
   );
 }
 
-function CabecalhoPagina({ rota, titulo, descricao, tituloId }) {
-  return (
-    <header className="pagina__cabecalho">
-      <p className="breadcrumb">
-        <LinkInterno rota="inicio">home</LinkInterno>
-        <span>/</span>
-        <span>{rota}</span>
-      </p>
-      <TituloComCursor id={tituloId}>{titulo}</TituloComCursor>
-      <p>{descricao}</p>
-    </header>
-  );
-}
-
 function Sobre() {
+  const caminhoFoto = `${basePublica}${curriculo.foto.replace(/^\//, '')}`.replace(/\/{2,}/g, '/');
+
   return (
-    <section className="pagina" aria-labelledby="titulo-sobre">
-      <CabecalhoPagina
+    <section className="pagina pagina-rota pagina-rota--estreita" aria-labelledby="titulo-sobre">
+      <CabecalhoRota
         rota="about"
         titulo="Sobre mim"
-        tituloId="titulo-sobre"
         descricao="Currículo online com foco em desenvolvimento full stack, interfaces web e organização de entrega."
       />
 
-      <div className="grade-sobre">
-        <article className="painel-texto painel-texto--principal">
-          <p>{curriculo.resumo}</p>
-          <p>
-            Trabalho com uma stack direta para web: React no front-end, Node.js no back-end, SQL para dados,
-            Python para automações e Git/GitHub para versionamento.
-          </p>
-        </article>
-
-        <aside className="painel-lista" aria-labelledby="titulo-idiomas">
-          <h2 id="titulo-idiomas">Idiomas</h2>
-          <ul>
-            {curriculo.idiomas.map((idioma) => (
-              <li key={idioma.idioma}>
-                <span>{idioma.idioma}</span>
-                <strong>{idioma.nivel}</strong>
-              </li>
+      <article className="perfil-retro">
+        <a className="perfil-retro__avatar" href={curriculo.linkedin} target="_blank" rel="noreferrer">
+          <img src={caminhoFoto} alt="Foto de Artur Lachoman Falavinha" />
+        </a>
+        <div className="perfil-retro__conteudo">
+          <p className="eyebrow-retro">full stack developer</p>
+          <h2>{curriculo.nome}</h2>
+          <p>{curriculo.localizacao}</p>
+          <div className="perfil-retro__tags">
+            {curriculo.competencias.slice(1, 5).map((competencia) => (
+              <TagRetro key={competencia}>{competencia}</TagRetro>
             ))}
-          </ul>
-        </aside>
+          </div>
+        </div>
+      </article>
+
+      <div className="prosa-retro">
+        <p>{curriculo.resumo}</p>
+        <p>
+          Trabalho com uma stack direta para web: React no front-end, Node.js no back-end, SQL para dados,
+          Python para automações e Git/GitHub para versionamento.
+        </p>
       </div>
 
-      <div className="linha-editorial">
-        <section aria-labelledby="titulo-experiencia">
-          <h2 id="titulo-experiencia">Experiência</h2>
-          {curriculo.experiencia.map((experiencia) => (
-            <article className="item-linha" key={experiencia.cargo}>
-              <span>{experiencia.periodo}</span>
-              <h3>{experiencia.cargo}</h3>
-              <ul>
-                {experiencia.atividades.map((atividade) => (
-                  <li key={atividade}>{atividade}</li>
+      <section className="secao-retro" aria-labelledby="titulo-habilidades">
+        <h2 id="titulo-habilidades" className="secao-retro__titulo">
+          Habilidades &amp; Tecnologias
+        </h2>
+        <div className="grade-habilidades-retro">
+          {[
+            ['// Frontend', ['React', 'Componentização', 'CSS responsivo', 'Acessibilidade']],
+            ['// Backend', ['Node.js', 'APIs', 'Python', 'SQL']],
+            ['// Ferramentas & DevOps', ['Git', 'GitHub', 'Pull Requests', 'CI/CD']],
+            ['// Qualidade', ['Código limpo', 'Versionamento', 'Documentação', 'Deploy']],
+          ].map(([titulo, itens]) => (
+            <article className="habilidade-retro" key={titulo}>
+              <h3>{titulo}</h3>
+              <div>
+                {itens.map((item) => (
+                  <TagRetro key={item}>{item}</TagRetro>
                 ))}
-              </ul>
+              </div>
             </article>
           ))}
-        </section>
+        </div>
+      </section>
 
-        <section aria-labelledby="titulo-formacao">
-          <h2 id="titulo-formacao">Formação</h2>
-          {curriculo.formacao.map((formacao) => (
-            <article className="item-linha" key={formacao.curso}>
-              <span>{formacao.periodo}</span>
-              <h3>{formacao.curso}</h3>
-              <p>{formacao.instituicao}</p>
-              <p>{formacao.detalhes}</p>
+      <section className="secao-retro" aria-labelledby="titulo-experiencia">
+        <h2 id="titulo-experiencia" className="secao-retro__titulo">
+          Experiência
+        </h2>
+        <div className="lista-retro">
+          {curriculo.experiencia.map((experiencia) => (
+            <article className="item-retro" key={experiencia.cargo}>
+              <Briefcase size={20} strokeWidth={1.8} />
+              <div>
+                <div className="item-retro__topo">
+                  <h3>{experiencia.cargo}</h3>
+                  <span>{experiencia.periodo}</span>
+                </div>
+                <ul>
+                  {experiencia.atividades.map((atividade) => (
+                    <li key={atividade}>{atividade}</li>
+                  ))}
+                </ul>
+              </div>
             </article>
           ))}
-        </section>
-      </div>
+        </div>
+      </section>
+
+      <section className="secao-retro" aria-labelledby="titulo-formacao">
+        <h2 id="titulo-formacao" className="secao-retro__titulo">
+          Formação
+        </h2>
+        <div className="lista-retro">
+          {curriculo.formacao.map((formacao) => (
+            <article className="item-retro" key={formacao.curso}>
+              <GraduationCap size={20} strokeWidth={1.8} />
+              <div>
+                <div className="item-retro__topo">
+                  <h3>{formacao.curso}</h3>
+                  <span>{formacao.periodo}</span>
+                </div>
+                <p>{formacao.instituicao}</p>
+                <p>{formacao.detalhes}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
     </section>
   );
 }
@@ -341,42 +408,53 @@ function Stack() {
   const categorias = [
     {
       titulo: 'Base atual',
+      descricao: 'Stack principal do currículo',
       itens: curriculo.competencias,
     },
     {
       titulo: 'Frontend',
-      itens: ['React', 'Componentização', 'CSS responsivo', 'Acessibilidade'],
+      descricao: 'Interface, componentização e responsividade',
+      itens: ['React', 'CSS responsivo', 'Acessibilidade', 'Experiência de uso'],
     },
     {
-      titulo: 'Backend e dados',
-      itens: ['Node.js', 'SQL', 'APIs', 'Python'],
+      titulo: 'Backend e Dados',
+      descricao: 'APIs, automações e persistência',
+      itens: ['Node.js', 'SQL', 'Python', 'APIs'],
     },
     {
-      titulo: 'Fluxo de entrega',
+      titulo: 'Fluxo de Entrega',
+      descricao: 'Versionamento e publicação',
       itens: ['Git', 'GitHub', 'Pull Requests', 'CI/CD'],
     },
   ];
 
   return (
-    <section className="pagina" aria-labelledby="titulo-stack">
-      <CabecalhoPagina
+    <section className="pagina pagina-rota pagina-rota--larga" aria-labelledby="titulo-stack">
+      <CabecalhoRota
         rota="stack"
-        titulo="Stack atual"
-        tituloId="titulo-stack"
+        titulo="Stack"
         descricao="Ferramentas e práticas que uso para construir, versionar e publicar aplicações web."
+        largura="larga"
       />
 
-      <div className="grade-stack">
-        {categorias.map((categoria, indiceCategoria) => (
-          <article className="cartao-stack" key={categoria.titulo}>
-            <span>{String(indiceCategoria + 1).padStart(2, '0')}</span>
-            <h2>{categoria.titulo}</h2>
-            <ul>
+      <div className="lista-ferramentas-retro">
+        {categorias.map((categoria) => (
+          <section className="ferramentas-retro" key={categoria.titulo}>
+            <div>
+              <p>{categoria.titulo}</p>
+              <span>{categoria.descricao}</span>
+            </div>
+            <div className="grade-ferramentas-retro">
               {categoria.itens.map((item) => (
-                <li key={item}>{item}</li>
+                <article className="ferramenta-retro" key={item}>
+                  <span>
+                    <Code2 size={22} strokeWidth={1.8} />
+                  </span>
+                  <strong>{item}</strong>
+                </article>
               ))}
-            </ul>
-          </article>
+            </div>
+          </section>
         ))}
       </div>
     </section>
@@ -385,27 +463,26 @@ function Stack() {
 
 function Projetos() {
   return (
-    <section className="pagina" aria-labelledby="titulo-projetos">
-      <CabecalhoPagina
+    <section className="pagina pagina-rota pagina-rota--estreita" aria-labelledby="titulo-projetos">
+      <CabecalhoRota
         rota="projects"
         titulo="Projetos"
-        tituloId="titulo-projetos"
         descricao="Recortes de trabalho prático em interface, automação e publicação de aplicações."
       />
 
-      <div className="lista-projetos">
-        {curriculo.projetos.map((projeto, indiceProjeto) => (
-          <article className="projeto" key={projeto.nome}>
-            <span className="projeto__indice">{String(indiceProjeto + 1).padStart(2, '0')}</span>
-            <div>
-              <h2>{projeto.nome}</h2>
-              <p>{projeto.descricao}</p>
-            </div>
-            <ul>
+      <div className="lista-blog-retro">
+        {curriculo.projetos.map((projeto) => (
+          <article className="post-retro" key={projeto.nome}>
+            <div className="post-retro__tags">
               {projeto.tecnologias.map((tecnologia) => (
-                <li key={tecnologia}>{tecnologia}</li>
+                <TagRetro key={tecnologia}>{tecnologia}</TagRetro>
               ))}
-            </ul>
+            </div>
+            <h2>{projeto.nome}</h2>
+            <p>{projeto.descricao}</p>
+            <a href={projeto.link} className="post-retro__link">
+              Ver detalhes <ArrowUpRight size={14} strokeWidth={2} />
+            </a>
           </article>
         ))}
       </div>
@@ -417,18 +494,28 @@ function Contato() {
   const canais = [
     {
       nome: 'LinkedIn',
+      descricao: 'Vamos nos conectar profissionalmente.',
       valor: 'linkedin.com/in/artur-falavinha',
       href: curriculo.linkedin,
       Icone: Linkedin,
     },
     {
       nome: 'GitHub',
+      descricao: 'Confira meus projetos e contribuições.',
       valor: 'github.com/Artur-Falavinha',
       href: curriculo.github,
       Icone: Github,
     },
     {
+      nome: 'Email',
+      descricao: 'Canal direto para conversas profissionais.',
+      valor: 'Disponível mediante contato',
+      href: criarHref('about'),
+      Icone: Mail,
+    },
+    {
       nome: 'Localização',
+      descricao: 'Baseado em Curitiba, Paraná.',
       valor: curriculo.localizacao,
       href: criarHref('about'),
       Icone: MapPin,
@@ -436,33 +523,35 @@ function Contato() {
   ];
 
   return (
-    <section className="pagina" aria-labelledby="titulo-contato">
-      <CabecalhoPagina
+    <section className="pagina pagina-rota pagina-rota--estreita" aria-labelledby="titulo-contato">
+      <CabecalhoRota
         rota="contact"
         titulo="Contato"
-        tituloId="titulo-contato"
-        descricao="Canais para acompanhar meu trabalho e iniciar uma conversa profissional."
+        descricao="Quer conversar sobre tecnologia, projetos ou oportunidades? Estes são meus canais profissionais."
       />
 
-      <address className="grade-contato">
-        {canais.map(({ nome, valor, href, Icone }) => (
+      <address className="grade-contato-retro">
+        {canais.map(({ nome, descricao, valor, href, Icone }) => (
           <a
-            className="cartao-contato"
+            className="contato-retro"
             href={href}
             key={nome}
             target={href.startsWith('http') ? '_blank' : undefined}
             rel={href.startsWith('http') ? 'noreferrer' : undefined}
           >
-            <Icone size={20} strokeWidth={1.8} />
-            <span>{nome}</span>
-            <strong>{valor}</strong>
-            <ArrowUpRight size={16} strokeWidth={1.8} aria-hidden="true" />
+            <Icone size={22} strokeWidth={1.8} />
+            <span>
+              <strong>{nome}</strong>
+              <small>{descricao}</small>
+              <em>{valor}</em>
+            </span>
           </a>
         ))}
       </address>
     </section>
   );
 }
+
 
 export function App() {
   const [rotaAtual, setRotaAtual] = useState(obterRotaAtual);
