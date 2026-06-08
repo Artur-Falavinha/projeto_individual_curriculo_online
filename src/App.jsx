@@ -13,6 +13,8 @@ const titulosRotas = {
   projects: 'Projetos',
   contact: 'Contato',
 };
+const fusoHorarioPortfolio = 'America/Sao_Paulo';
+const cargosTypewriter = ['Full Stack Developer', 'React', 'Node.js', 'SQL', 'Python'];
 
 function criarHref(rota = 'inicio') {
   const caminho = rota === 'inicio' ? '' : rota;
@@ -69,15 +71,6 @@ function AppShell({ children, rotaAtual }) {
   );
 }
 
-function TerminalComando({ comando, children }) {
-  return (
-    <div className="terminal__bloco">
-      <p className="terminal__comando">$ {comando}</p>
-      <div className="terminal__resposta">{children}</div>
-    </div>
-  );
-}
-
 function CursorTerminal({ className = '' }) {
   return <span className={`cursor-terminal ${className}`.trim()} aria-hidden="true" />;
 }
@@ -91,57 +84,163 @@ function TituloComCursor({ children, id }) {
   );
 }
 
+function formatarHorarioTerminal() {
+  const partes = new Intl.DateTimeFormat('en-CA', {
+    timeZone: fusoHorarioPortfolio,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false,
+  }).formatToParts(new Date());
+
+  const obterParte = (tipo) => partes.find((parte) => parte.type === tipo)?.value ?? '';
+
+  return `${obterParte('year')}-${obterParte('month')}-${obterParte('day')} ${obterParte('hour')}:${obterParte(
+    'minute',
+  )}:${obterParte('second')}`;
+}
+
+function RelogioTerminal() {
+  const [horario, setHorario] = useState(formatarHorarioTerminal);
+
+  useEffect(() => {
+    const intervalo = window.setInterval(() => {
+      setHorario(formatarHorarioTerminal());
+    }, 1000);
+
+    return () => window.clearInterval(intervalo);
+  }, []);
+
+  return (
+    <span className="retro-terminal-time" aria-live="polite">
+      {horario}
+    </span>
+  );
+}
+
+function TypewriterTerminal({ palavras }) {
+  const [indicePalavra, setIndicePalavra] = useState(0);
+  const [quantidadeCaracteres, setQuantidadeCaracteres] = useState(0);
+  const [apagando, setApagando] = useState(false);
+
+  useEffect(() => {
+    const palavraAtual = palavras[indicePalavra];
+    const fimDaEscrita = quantidadeCaracteres === palavraAtual.length;
+    const inicioDaPalavra = quantidadeCaracteres === 0;
+    const atraso = fimDaEscrita && !apagando ? 1300 : apagando ? 42 : 76;
+
+    const timeout = window.setTimeout(() => {
+      if (!apagando && fimDaEscrita) {
+        setApagando(true);
+        return;
+      }
+
+      if (apagando && inicioDaPalavra) {
+        setApagando(false);
+        setIndicePalavra((indiceAtual) => (indiceAtual + 1) % palavras.length);
+        return;
+      }
+
+      setQuantidadeCaracteres((quantidadeAtual) => quantidadeAtual + (apagando ? -1 : 1));
+    }, atraso);
+
+    return () => window.clearTimeout(timeout);
+  }, [apagando, indicePalavra, palavras, quantidadeCaracteres]);
+
+  return (
+    <span className="typewriter-terminal" aria-label={palavras[indicePalavra]}>
+      <span>{palavras[indicePalavra].slice(0, quantidadeCaracteres)}</span>
+      <span className="typewriter-terminal__cursor" aria-hidden="true">
+        |
+      </span>
+    </span>
+  );
+}
+
 function Inicio() {
   return (
     <section className="pagina pagina--inicio" aria-labelledby="titulo-inicio">
-      <div className="status-global">
-        <span>arturfalavinha.dev — full stack developer · curitiba/pr</span>
-        <strong>available for projects</strong>
-      </div>
-
-      <article className="terminal" aria-label="Apresentação profissional">
-        <p className="terminal__prompt">artur@portfolio:~</p>
-
-        <TerminalComando comando="whoami">
-          <p>{curriculo.nome}</p>
-        </TerminalComando>
-
-        <TerminalComando comando="cat hello.txt">
-          <TituloComCursor id="titulo-inicio">Full Stack Developer</TituloComCursor>
-        </TerminalComando>
-
-        <TerminalComando comando="cat bio.txt">
-          <p>{curriculo.apresentacao}</p>
-        </TerminalComando>
-
-        <TerminalComando comando="./connect.sh">
-          <div className="terminal__acoes">
-            <LinkInterno rota="contact" className="link-terminal">
-              &gt; Entrar em contato
-            </LinkInterno>
-            <LinkInterno rota="about" className="link-terminal">
-              &gt; Sobre mim
-            </LinkInterno>
+      <div className="inicio-retro">
+        <article className="retro-terminal" aria-label="Apresentação profissional">
+          <div className="retro-terminal-bar" aria-hidden="true">
+            <span className="retro-terminal-btn retro-btn-close" />
+            <span className="retro-terminal-btn retro-btn-min" />
+            <span className="retro-terminal-btn retro-btn-max" />
+            <span className="retro-terminal-title">artur@portfolio:~</span>
+            <RelogioTerminal />
           </div>
-        </TerminalComando>
 
-        <p className="terminal__cursor">$</p>
-      </article>
+          <div className="retro-terminal-body">
+            <p className="retro-line">
+              <span className="retro-prompt">$</span>
+              <span className="retro-cmd"> whoami</span>
+            </p>
+            <p className="retro-output">Bem-vindo ao meu currículo online</p>
 
-      <dl className="resumo-rapido">
-        <div>
-          <dt>loc</dt>
-          <dd>{curriculo.localizacao.replace(', Brasil', ' · BR')}</dd>
+            <p className="retro-line">
+              <span className="retro-prompt">$</span>
+              <span className="retro-cmd"> cat hello.txt</span>
+            </p>
+            <h1 className="retro-terminal-heading" id="titulo-inicio">
+              Olá, eu sou <span>Artur</span>
+              <span className="retro-blink" aria-hidden="true">
+                _
+              </span>
+            </h1>
+
+            <div className="retro-typewriter" aria-label="Stack principal">
+              <span className="retro-typewriter__prefix">//</span>
+              <TypewriterTerminal palavras={cargosTypewriter} />
+            </div>
+
+            <p className="retro-line retro-line--bio">
+              <span className="retro-prompt">$</span>
+              <span className="retro-cmd"> cat bio.txt</span>
+            </p>
+            <p className="retro-bio">{curriculo.apresentacao}</p>
+
+            <p className="retro-line retro-line--acoes">
+              <span className="retro-prompt">$</span>
+              <span className="retro-cmd"> ./connect.sh</span>
+            </p>
+            <div className="retro-terminal-actions">
+              <LinkInterno rota="contact" className="retro-btn-primary">
+                &gt; Entrar em contato
+              </LinkInterno>
+              <LinkInterno rota="about" className="retro-btn-secondary">
+                &gt; Sobre mim
+              </LinkInterno>
+            </div>
+
+            <p className="retro-line retro-line--cursor" aria-hidden="true">
+              <span className="retro-prompt">$</span>
+              <span className="retro-cursor-line" />
+            </p>
+          </div>
+        </article>
+
+        <div className="retro-meta" aria-label="Resumo rápido">
+          <span>
+            <strong>loc:</strong> Curitiba, PR · BR
+          </span>
+          <span>
+            <strong>utc:</strong> -3
+          </span>
+          <span>
+            <strong>status:</strong>{' '}
+            <span className="retro-meta__status">
+              <span className="retro-dot" aria-hidden="true" />
+              disponível
+            </span>
+          </span>
+          <span>
+            <strong>stack:</strong> React · Node.js · SQL · Python
+          </span>
         </div>
-        <div>
-          <dt>status</dt>
-          <dd>{curriculo.status}</dd>
-        </div>
-        <div>
-          <dt>stack</dt>
-          <dd>{curriculo.competencias.join(' · ')}</dd>
-        </div>
-      </dl>
+      </div>
     </section>
   );
 }
