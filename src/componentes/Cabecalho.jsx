@@ -48,6 +48,10 @@ export function Cabecalho({ curriculo, rotaAtual }) {
     setTema((temaAtual) => (temaAtual === 'dark' ? 'light' : 'dark'));
   }
 
+  function obterRotuloNavegacao(rota, rotulo) {
+    return rotaAtual === rota ? `[${rotulo}]` : rotulo;
+  }
+
   return (
     <header className="cabecalho retro-header">
       <nav className="cabecalho__nav" aria-label="Navegação principal">
@@ -64,7 +68,7 @@ export function Cabecalho({ curriculo, rotaAtual }) {
           {itensNavegacao.map(([rota, rotulo]) => (
             <li key={rota}>
               <a className="retro-nav-link" href={criarHref(rota)} aria-current={rotaAtual === rota ? 'page' : undefined}>
-                {rotulo}
+                {obterRotuloNavegacao(rota, rotulo)}
               </a>
             </li>
           ))}
@@ -106,7 +110,7 @@ export function Cabecalho({ curriculo, rotaAtual }) {
                     role="menuitem"
                     aria-current={rotaAtual === rota ? 'page' : undefined}
                   >
-                    {rotulo}
+                    {obterRotuloNavegacao(rota, rotulo)}
                   </a>
                 ))}
               </div>

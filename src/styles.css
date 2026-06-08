@@ -176,9 +176,12 @@ a:focus-visible {
     background 160ms ease;
 }
 
-.navegacao a[aria-current="page"],
 .navegacao a:hover {
   color: var(--cor-texto);
+}
+
+.navegacao a[aria-current="page"] {
+  color: var(--cor-primaria);
 }
 
 .cabecalho__espaco {
@@ -253,9 +256,12 @@ a:focus-visible {
   border-bottom: 0;
 }
 
-.menu-mobile__item:hover,
-.menu-mobile__item[aria-current="page"] {
+.menu-mobile__item:hover {
   color: var(--cor-texto);
+}
+
+.menu-mobile__item[aria-current="page"] {
+  color: var(--cor-primaria);
 }
 
 .cabecalho__status {
