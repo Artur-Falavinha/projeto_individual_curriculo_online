@@ -519,28 +519,24 @@ function Contato() {
     {
       nome: 'LinkedIn',
       descricao: 'Vamos nos conectar profissionalmente.',
-      valor: 'linkedin.com/in/artur-falavinha',
       href: curriculo.linkedin,
       Icone: Linkedin,
     },
     {
       nome: 'GitHub',
       descricao: 'Confira meus projetos e contribuições.',
-      valor: 'github.com/Artur-Falavinha',
       href: curriculo.github,
       Icone: Github,
     },
     {
       nome: 'Email',
       descricao: 'Canal direto para conversas profissionais.',
-      valor: 'Disponível mediante contato',
       href: criarHref('about'),
       Icone: Mail,
     },
     {
       nome: 'Localização',
       descricao: 'Baseado em Curitiba, Paraná.',
-      valor: curriculo.localizacao,
       href: criarHref('about'),
       Icone: MapPin,
     },
@@ -555,7 +551,7 @@ function Contato() {
       />
 
       <address className="grade-contato-retro">
-        {canais.map(({ nome, descricao, valor, href, Icone }) => (
+        {canais.map(({ nome, descricao, href, Icone }) => (
           <a
             className="contato-retro"
             href={href}
@@ -563,12 +559,13 @@ function Contato() {
             target={href.startsWith('http') ? '_blank' : undefined}
             rel={href.startsWith('http') ? 'noreferrer' : undefined}
           >
-            <Icone size={22} strokeWidth={1.8} />
-            <span>
-              <strong>{nome}</strong>
-              <small>{descricao}</small>
-              <em>{valor}</em>
+            <span className="contato-retro__icone">
+              <Icone size={24} strokeWidth={2} />
             </span>
+            <div>
+              <h3>{nome}</h3>
+              <p>{descricao}</p>
+            </div>
           </a>
         ))}
       </address>
