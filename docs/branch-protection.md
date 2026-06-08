@@ -1,11 +1,11 @@
 # Evidência de proteção da branch main
 
-Configuração aplicada no repositório `Artur-Falavinha/projeto_individual_curriculo_online` em 07/06/2026 via GitHub API.
+Configuração aplicada no repositório `Artur-Falavinha/ds881-curriculo-GRR20243007` em 07/06/2026 via GitHub API.
 
 Endpoint consultado:
 
 ```text
-GET /repos/Artur-Falavinha/projeto_individual_curriculo_online/branches/main/protection
+GET /repos/Artur-Falavinha/ds881-curriculo-GRR20243007/branches/main/protection
 ```
 
 Resumo da regra ativa:

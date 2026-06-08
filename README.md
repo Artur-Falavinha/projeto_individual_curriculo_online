@@ -4,7 +4,7 @@ Currículo online estático de Artur Lachoman Falavinha, publicado com GitHub Pa
 
 ## Produção
 
-https://artur-falavinha.github.io/projeto_individual_curriculo_online/
+https://artur-falavinha.github.io/ds881-curriculo-GRR20243007/
 
 ## Rotas
 
